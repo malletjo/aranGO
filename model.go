@@ -443,7 +443,7 @@ func getTags(obj reflect.Type, tags map[string]string, key string) {
 	for i := 0; i < fieldsCount; i++ {
 		structField := obj.Field(i)
 		if structField.Anonymous && structField.Type.Kind() == reflect.Struct {
-			getTags(obj, tags, key)
+			getTags(structField.Type, tags, key)
 		} else {
 			tag = structField.Tag.Get(key)
 			if tag != "" {
